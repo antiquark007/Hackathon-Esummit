@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Industry Waste Management Tracker</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+         body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(to bottom right, #a8e6cf, #dcedc1);
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 30px;
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .header-box {
+            background-color: #1e3c72; /* Darkish green */
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .card {
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            width: 250px;
+            padding: 20px;
+            transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; /* Ensures equal height */
+            height: 329px;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .card h2 {
+            color: #3498db;
+            border-bottom: 2px solid #1abc9c;
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+
+        .card-label {
+            font-weight: bold;
+            color: #ecf0f1;
+            margin-right: 5px;
+        }
+
+        .card p {
+            margin: 10px 0;
+        }
+
+        .waste-type {
+            background-color: #1abc9c;
+            color: white;
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: auto; /* Pushes buttons to the bottom */
+        }
+
+        button {
+            height: 36px;
+            width: 100px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        #accept {
+            display: inline;
+            background-color: #2ecc71; /* Green */
+        }
+
+        #accept:hover {
+            background-color: #27ae60; /* Darker green on hover */
+        }
+
+        #reject {
+            display:inline;
+            background-color: #e74c3c; /* Red */
+        }
+
+        #reject:hover {
+            background-color: #c0392b; /* Darker red on hover */
+        }
+    
+    </style>
+</head>
+
+<body>
+    <div class="page-header">
+        <h1>Industry Waste Management Data</h1>
+        <p>Comprehensive tracking of industrial waste across different sectors</p>
+    </div>
+    <div class="container">
+        <% for(data of industryData){ %>
+            <div class="card">
+                <h2>
+                    <%= data.name %>
+                </h2>
+                <p><span class="card-label">Contact:</span>
+                    <%= data.contactNumber %>
+                </p>
+                <p><span class="card-label">Waste Type:</span> <span class="waste-type">
+                        <%= data.wasteType %>
+                    </span></p>
+                <p><span class="card-label">Waste Weight:</span>
+                    <%= data.wasteWeight %>
+                </p>
+                <p><span class="card-label">Deadline:</span>
+                    <%= data.deadendDate %>
+                </p>
+                <p><span class="card-label">Notes:</span>
+                    <%= data.additionalNotes %>
+                </p>
+                <button id="accept">Accept</button>
+                <button id="reject">Reject</button>
+            </div>
+            <% } %>
+    </div>
+</body>
+<script>
+      document.querySelectorAll('.card').forEach(card => {
+            
+            const acceptButton = card.querySelector('#accept');
+            const rejectButton = card.querySelector('#reject');
+
+           
+            acceptButton.addEventListener('click', function () {
+                alert('You have accepted the data.');
+            });
+
+           
+            rejectButton.addEventListener('click', function () {
+                alert('You have rejected the data.');
+                card.style.display = 'none'; 
+            });
+        });
+   
+   
+</script>
+
+</html>

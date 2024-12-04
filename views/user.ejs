@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trash to Treasure - Recycling & Creativity</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .card-hover {
+            transition: transform 0.3s ease-in-out;
+        }
+        .card-hover:hover {
+            transform: scale(1.05);
+        }
+        .w-10{
+            width: 7.5rem;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans">
+    <!-- Navigation Bar -->
+    <nav class="bg-green-600 text-white p-4 shadow-md">
+        <div class="container mx-auto flex justify-between items-center">
+            <!-- Logo -->
+            <div class="flex items-center">
+                <img src="/logo.jpeg" alt="Trash to Treasure Logo" class="h-10 w-10 mr-3">
+                <span class="text-xl font-bold">Trash to Treasure</span>
+            </div>
+
+            <!-- Navigation Links -->
+            <div class="flex items-center space-x-6">
+                <a href="/home" class="hover:text-green-200">Home</a>
+                <a href="/home/user/product" class="hover:text-green-200">Products</a>
+                <a href="/home/user/pickup" class="hover:text-green-200">Schedule Pickup</a>
+            </div>
+
+            <!-- Search Bar -->
+            <div class="flex items-center">
+                <input type="text" placeholder="Search products..." 
+                    class="px-3 py-2 rounded-l-md text-gray-700 focus:outline-none">
+                <button class="bg-green-500 text-white px-4 py-2 rounded-r-md hover:bg-green-700">
+                    Search
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- About Section -->
+  
+
+    <!-- Creative Reuse Cards -->
+    <section class="container mx-auto my-12 px-4">
+        <h2 class="text-3xl font-bold text-green-700 mb-8 text-center">
+            Creative Waste Transformation
+        </h2>
+        <div class="grid md:grid-cols-3 gap-6">
+            <!-- Card 1: Art from Waste -->
+            <div class="bg-white rounded-lg shadow-md p-6 text-center card-hover">
+                <img src="/IMAGES/CREATING ART.jpg" alt="Art from Waste" class="mx-auto mb-4 rounded-md">
+                <h3 class="text-xl font-semibold text-green-600 mb-2">
+                    Use Your Waste in Art
+                </h3>
+                <p class="text-gray-600">
+                    Transform ordinary waste into extraordinary art pieces. 
+                    Learn creative techniques to upcycle materials.
+                </p>
+            </div>
+
+            <!-- Card 2: Recycled Toys -->
+            <div class="bg-white rounded-lg shadow-md p-6 text-center card-hover">
+                <img src="/IMAGES/TOYS.jpg" alt="Recycled Toys" class="mx-auto mb-4 rounded-md">
+                <h3 class="text-xl font-semibold text-green-600 mb-2">
+                    Recycled Toys
+                </h3>
+                <p class="text-gray-600">
+                    Create fun and eco-friendly toys from recycled materials. 
+                    Safe, sustainable play for children.
+                </p>
+            </div>
+
+            <!-- Card 3: Composting -->
+            <div class="bg-white rounded-lg shadow-md p-6 text-center card-hover">
+                <img src="/IMAGES/ORGANIC COMPOST.jpg" alt="Composting" class="mx-auto mb-4 rounded-md">
+                <h3 class="text-xl font-semibold text-green-600 mb-2">
+                    Making Compost
+                </h3>
+                <p class="text-gray-600">
+                    Turn kitchen and garden waste into nutrient-rich compost. 
+                    Boost your garden's health naturally.
+                </p>
+            </div>
+
+            <!-- Card 4: Plant Vases -->
+            <div class="bg-white rounded-lg shadow-md p-6 text-center card-hover">
+                <img src="/IMAGES/PLANT VASES.jpg" alt="Plant Vases" class="mx-auto mb-4 rounded-md">
+                <h3 class="text-xl font-semibold text-green-600 mb-2">
+                    Making Plant Vases
+                </h3>
+                <p class="text-gray-600">
+                    Craft unique plant containers from recycled materials. 
+                    Add a green touch to your home decor.
+                </p>
+            </div>
+
+            <!-- Card 5: Plastic Recycling -->
+            <div class="bg-white rounded-lg shadow-md p-6 text-center card-hover">
+                <img src="/IMAGES/RECYCLING PLASTIC.jpg" alt="Plastic Recycling" class="mx-auto mb-4 rounded-md">
+                <h3 class="text-xl font-semibold text-green-600 mb-2">
+                    Recycling Plastic
+                </h3>
+                <p class="text-gray-600">
+                    Learn innovative ways to recycle and repurpose plastic waste. 
+                    Reduce environmental impact.
+                </p>
+            </div>
+
+            <!-- Card 6: Waste Segregation -->
+            <div class="bg-white rounded-lg shadow-md p-6 text-center card-hover">
+                <img src="/IMAGES/SEGREGATING.jpg" alt="Waste Segregation" class="mx-auto mb-4 rounded-md">
+                <h3 class="text-xl font-semibold text-green-600 mb-2">
+                    Segregated Waste
+                </h3>
+                <p class="text-gray-600">
+                    Master the art of waste segregation for efficient recycling. 
+                    Every sorted item makes a difference.
+                </p>
+            </div>
+        </div>
+    </section>
+    <section class="container mx-auto my-12 px-4">
+      <div class="bg-white shadow-lg rounded-lg p-8">
+          <h2 class="text-3xl font-bold text-green-700 mb-6 text-center">
+              About Trash to Treasure
+          </h2>
+          <p class="text-gray-700 text-center leading-relaxed">
+              Trash to Treasure is a revolutionary initiative aimed at transforming waste 
+              into valuable resources. We believe that what seems like trash can be 
+              reimagined, recycled, and repurposed into beautiful, useful items. 
+              Our mission is to promote sustainability, creativity, and environmental 
+              consciousness by giving new life to discarded materials.
+          </p>
+      </div>
+  </section>
+    <!-- Footer -->
+    <footer class="bg-green-700 text-white py-8">
+        <div class="container mx-auto px-4 grid md:grid-cols-3 gap-6">
+            <!-- Contact Information -->
+            <div>
+                <h4 class="text-xl font-bold mb-4">Contact Us</h4>
+                <p>Email: info@trashtotresure.com</p>
+                <p>Phone: (555) 123-4567</p>
+                <p>Address: 123 Green Street, Eco City</p>
+            </div>
+
+            <!-- Quick Links -->
+            <div>
+                <h4 class="text-xl font-bold mb-4">Quick Links</h4>
+                <ul>
+                    <li><a href="#" class="hover:text-green-200">Home</a></li>
+                    <li><a href="#" class="hover:text-green-200">About Us</a></li>
+                    <li><a href="#" class="hover:text-green-200">Services</a></li>
+                    <li><a href="#" class="hover:text-green-200">Contact</a></li>
+                </ul>
+            </div>
+
+            <!-- Newsletter Signup -->
+            <div>
+                <h4 class="text-xl font-bold mb-4">Stay Updated</h4>
+                <form id="newsletterForm" class="flex">
+                    <input type="email" placeholder="Enter your email" 
+                        class="px-3 py-2 rounded-l-md text-gray-700 focus:outline-none w-full"
+                        id="newsletterEmail" required>
+                    <button type="submit" 
+                        class="bg-green-500 text-white px-4 py-2 rounded-r-md hover:bg-green-600">
+                        Subscribe
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Copyright -->
+        <div class="text-center mt-6 border-t border-green-600 pt-4">
+            <p>&copy; 2024 Trash to Treasure. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Newsletter Signup Validation
+        document.getElementById('newsletterForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = document.getElementById('newsletterEmail').value;
+            
+            // Basic email validation
+            if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                alert('Thank you for subscribing!');
+                this.reset(); // Clear the form
+            } else {
+                alert('Please enter a valid email address.');
+            }
+        });
+
+        // Search functionality (basic example)
+        const searchButton = document.querySelector('button');
+        const searchInput = document.querySelector('input[type="text"]');
+        
+        searchButton.addEventListener('click', function() {
+            const searchTerm = searchInput.value.trim();
+            if (searchTerm) {
+                alert(`Searching for: ${searchTerm}`);
+                // In a real application, this would trigger a search function
+            }
+        });
+    </script>
+</body>
+</html>

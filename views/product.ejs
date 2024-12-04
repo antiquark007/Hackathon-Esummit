@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      /* Body Styling */
+      body {
+        margin: 0;
+        font-family: "Poppins", sans-serif;
+        background: linear-gradient(to top, #322021, #2e8b57);
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      .container {
+        width: 900px;
+        margin: auto;
+        max-width: 90vw;
+        text-align: center;
+        padding-top: 20px; /* Adjust padding to give space for the title */
+        transition: transform 0.5s;
+        color: #fff;
+        height: 80vh; /* Ensuring the container height is responsive */
+        overflow: hidden;
+      }
+
+      svg {
+        width: 30px;
+      }
+
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 35px;
+        background-color: #74685100;
+        color: #fff;
+        border-radius: 10px 10px 0 0;
+      }
+
+      .icon-cart {
+        position: relative;
+        cursor: pointer;
+      }
+
+      .icon-cart span {
+        position: absolute;
+        background-color: red;
+        width: 30px;
+        height: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        color: #fff;
+        top: 50%;
+        right: -20px;
+      }
+
+      .title {
+        font-size: 2rem; /* Larger font size */
+        font-weight: 700; /* Bolder font */
+        color: #fff;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-top: 0; /* Position title at the top */
+      }
+
+      .listProduct {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 25px;
+        padding: 0px;
+        max-height: calc(
+          89vh - 140px
+        ); /* To ensure scrolling works within the container */
+        overflow-y: auto; /* Enables scroll if products overflow */
+      }
+
+      .listProduct .item img {
+        width: 100%;
+        filter: drop-shadow(0 50px 20px rgba(0, 0, 0, 0.1));
+        border-radius: 10px;
+      }
+
+      .listProduct .item {
+        background-color: #eeeee6;
+        padding: 20px;
+        border-radius: 10px;
+        transition: transform 0.3s, box-shadow 0.3s;
+      }
+
+      .listProduct .item:hover {
+        transform: translateY(-10px);
+        box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      .listProduct .item h2 {
+        font-weight: 500;
+        font-size: large;
+        color: #333;
+      }
+
+      .listProduct .item .price {
+        letter-spacing: 7px;
+        font-size: small;
+        color: #777;
+      }
+
+      .listProduct .item button {
+        background-color: #353432;
+        color: #eee;
+        border: none;
+        padding: 10px 20px;
+        margin-top: 10px;
+        border-radius: 20px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      .listProduct .item button:hover {
+        background-color: #2d2a28;
+      }
+
+      .cartTab {
+        width: 400px;
+        background-color: #353432;
+        color: #eee;
+        position: fixed;
+        top: 0;
+        right: -400px;
+        bottom: 0;
+        display: grid;
+        grid-template-rows: 70px 1fr 70px;
+        transition: 0.5s;
+      }
+
+      body.showCart .cartTab {
+        right: 0;
+      }
+
+      body.showCart .container {
+        transform: translateX(-250px);
+      }
+
+      .cartTab h1 {
+        padding: 20px;
+        margin: 0;
+        font-weight: 300;
+        background-color: #2d2a28;
+        text-align: center;
+      }
+
+      .cartTab .btn {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        padding: 10px;
+      }
+
+      .cartTab button {
+        background-color: #13b958;
+        border: none;
+        font-family: Poppins, sans-serif;
+        font-weight: 500;
+        cursor: pointer;
+        border-radius: 5px;
+        padding: 15px;
+      }
+
+      .cartTab .close {
+        background-color: #eee;
+        color: #333;
+      }
+
+      .listCart .item img {
+        width: 100%;
+        border-radius: 8px;
+      }
+
+      .listCart .item {
+        display: grid;
+        grid-template-columns: 70px 150px 50px 1fr;
+        gap: 1px;
+        text-align: center;
+        align-items: center;
+      }
+
+      .listCart .quantity span {
+        display: inline-block;
+        width: 25px;
+        height: 25px;
+        background-color: #eee;
+        border-radius: 50%;
+        color: #555;
+        cursor: pointer;
+      }
+
+      .listCart .quantity span:nth-child(2) {
+        background-color: transparent;
+        color: #eee;
+        cursor: auto;
+      }
+
+      .listCart .item:nth-child(even) {
+        background-color: #f8f8f8;
+        color: black;
+      }
+
+      .listCart {
+        overflow: auto;
+        padding: 10px;
+      }
+
+      .listCart::-webkit-scrollbar {
+        width: 0;
+      }
+
+      @media only screen and (max-width: 992px) {
+        .listProduct {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+
+      /* Mobile view */
+      @media only screen and (max-width: 768px) {
+        .listProduct {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .cartTab {
+          width: 100%;
+        }
+
+        .container {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body class="">
+    <div class="container">
+      <header>
+        <div class="title">Product List</div>
+        <div class="icon-cart">
+          <svg
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 18 20"
+          >
+            <path
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M6 15a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm0 0h8m-8 0-1-4m9 4a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-9-4h10l2-7H3m2 7L3 4m0 0-.792-3H1"
+            />
+          </svg>
+          <span>0</span>
+        </div>
+      </header>
+      <div class="listProduct"></div>
+    </div>
+    <div class="cartTab">
+      <h1>Shopping Cart</h1>
+      <div class="listCart"></div>
+      <div class="btn">
+        <button class="close">CLOSE</button>
+        <button class="checkOut">Check Out</button>
+      </div>
+    </div>
+
+    <script>
+        let listProductHTML = document.querySelector(".listProduct");
+let listCartHTML = document.querySelector(".listCart");
+let iconCart = document.querySelector(".icon-cart");
+let iconCartSpan = document.querySelector(".icon-cart span");
+let body = document.querySelector("body");
+let closeCart = document.querySelector(".close");
+let products = [];
+let cart = [];
+
+iconCart.addEventListener("click", () => {
+  body.classList.toggle("showCart");
+});
+closeCart.addEventListener("click", () => {
+  body.classList.toggle("showCart");
+});
+
+const addDataToHTML = () => {
+  // Remove existing products from HTML
+  listProductHTML.innerHTML = "";
+
+  // Add new products
+  if (products.length > 0) {
+    // If data exists
+    products.forEach((product) => {
+      let newProduct = document.createElement("div");
+      newProduct.dataset.id = product.id;
+      newProduct.classList.add("item");
+      newProduct.innerHTML = `
+                <img src="${product.image}" alt="">
+                <h2>${product.name}</h2>
+                <div class="price">$${product.price}</div>
+                <button class="addCart">Add To Cart</button>`;
+      listProductHTML.appendChild(newProduct);
+    });
+  }
+};
+
+listProductHTML.addEventListener("click", (event) => {
+  let positionClick = event.target;
+  if (positionClick.classList.contains("addCart")) {
+    let id_product = positionClick.parentElement.dataset.id;
+    addToCart(id_product);
+  }
+});
+
+const addToCart = (product_id) => {
+  let positionThisProductInCart = cart.findIndex(
+    (value) => value.product_id == product_id
+  );
+  if (cart.length <= 0) {
+    cart = [
+      {
+        product_id: product_id,
+        quantity: 1,
+      },
+    ];
+  } else if (positionThisProductInCart < 0) {
+    cart.push({
+      product_id: product_id,
+      quantity: 1,
+    });
+  } else {
+    cart[positionThisProductInCart].quantity += 1;
+  }
+  addCartToHTML();
+  addCartToMemory();
+};
+
+const addCartToMemory = () => {
+  localStorage.setItem("cart", JSON.stringify(cart));
+};
+
+const addCartToHTML = () => {
+  listCartHTML.innerHTML = "";
+  let totalQuantity = 0;
+  if (cart.length > 0) {
+    cart.forEach((item) => {
+      totalQuantity += item.quantity;
+      let newItem = document.createElement("div");
+      newItem.classList.add("item");
+      newItem.dataset.id = item.product_id;
+
+      let positionProduct = products.findIndex(
+        (value) => value.id == item.product_id
+      );
+      let info = products[positionProduct];
+      newItem.innerHTML = `
+            <div class="image">
+                <img src="${info.image}">
+            </div>
+            <div class="name">${info.name}</div>
+            <div class="totalPrice">$${info.price * item.quantity}</div>
+            <div class="quantity">
+                <span class="minus"><</span>
+                <span>${item.quantity}</span>
+                <span class="plus">></span>
+            </div>`;
+      listCartHTML.appendChild(newItem);
+    });
+  }
+  iconCartSpan.innerText = totalQuantity;
+};
+
+listCartHTML.addEventListener("click", (event) => {
+  let positionClick = event.target;
+  if (
+    positionClick.classList.contains("minus") ||
+    positionClick.classList.contains("plus")
+  ) {
+    let product_id = positionClick.parentElement.parentElement.dataset.id;
+    let type = positionClick.classList.contains("plus") ? "plus" : "minus";
+    changeQuantityCart(product_id, type);
+  }
+});
+
+const changeQuantityCart = (product_id, type) => {
+  let positionItemInCart = cart.findIndex(
+    (value) => value.product_id == product_id
+  );
+  if (positionItemInCart >= 0) {
+    let info = cart[positionItemInCart];
+    if (type === "plus") {
+      cart[positionItemInCart].quantity += 1;
+    } else {
+      let changeQuantity = cart[positionItemInCart].quantity - 1;
+      if (changeQuantity > 0) {
+        cart[positionItemInCart].quantity = changeQuantity;
+      } else {
+        cart.splice(positionItemInCart, 1);
+      }
+    }
+  }
+  addCartToHTML();
+  addCartToMemory();
+};
+
+const initApp = () => {
+  
+  const recycledProducts = [
+    {
+      id: 1,
+      name: "Recycled Paper Notebook",
+      price: 10,
+      image: "/image/1.png",
+    },
+    {
+      id: 2,
+      name: "Upcycled Glass Vase",
+      price: 15,
+      image: "/image/2.png",
+    },
+    {
+      id: 3,
+      name: "Reclaimed Wood Coasters",
+      price: 12,
+      image: "/image/3.png",
+    },
+    {
+      id: 4,
+      name: "Recycled Plastic Tote Bag",
+      price: 18,
+      image: "/image/4.png",
+    },
+    {
+      id: 5,
+      name: "Eco-Friendly Bamboo Straw Set",
+      price: 8,
+      image: "/image/5.png",
+    },
+    {
+      id: 6,
+      name: "Recycled Cotton T-Shirt",
+      price: 20,
+      image: "/image/6.png",
+    },
+    {
+      id: 7,
+      name: "Repurposed Denim Backpack",
+      price: 30,
+      image: "/image/7.png",
+    },
+    {
+      id: 8,
+      name: "Recycled Paper Wall Art",
+      price: 25,
+      image: "/image/8.png",
+    },
+    {
+      id: 9,
+      name: "Upcycled Wine Bottle Lamp",
+      price: 35,
+      image: "/image/9.png",
+    },
+    {
+      id: 10,
+      name: "Recycled Rubber Doormat",
+      price: 22,
+      image: "/image/10.png",
+    },
+  ];
+
+  products = recycledProducts;
+  addDataToHTML();
+
+  // Get cart data from memory
+  if (localStorage.getItem("cart")) {
+    cart = JSON.parse(localStorage.getItem("cart"));
+    addCartToHTML();
+  }
+};
+
+const checkOutButton = document.querySelector(".checkOut");
+
+checkOutButton.addEventListener("click", () => {
+  // Prepare order data
+  const orderData = {
+    cart: cart.map((item) => ({
+      product_id: item.product_id,
+      quantity: item.quantity,
+    })),
+  };
+
+  // Send order to backend
+  fetch("http://localhost:5000/api/orders/create-order", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(orderData),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      // Handle successful order
+      alert("Order placed successfully!");
+
+      // Clear cart
+      cart = [];
+      addCartToHTML();
+      addCartToMemory();
+
+      // Close cart
+      body.classList.remove("showCart");
+    })
+    .catch((error) => {
+      console.error("Order error:", error);
+      alert("Failed to place order. Please try again.");
+    });
+});
+
+initApp();
+
+    </script>
+  </body>
+</html>

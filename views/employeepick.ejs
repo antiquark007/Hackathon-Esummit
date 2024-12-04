@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+           
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 30px;
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 250px;
+            padding: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .card h2 {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+
+        .card-label {
+            font-weight: bold;
+            color: #7f8c8d;
+            margin-right: 5px;
+        }
+
+        .card p {
+            margin: 10px 0;
+        }
+
+        .waste-type {
+            background-color: #3498db;
+            color: white;
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+
+        #accept {
+            display: inline;
+            background-color: green;
+            height: 36px;
+            width: 102px;
+            border: none;
+            border-radius: 6px;
+        }
+
+        #reject {
+            margin-left: 44px;
+            display: inline;
+            background-color: red;
+            height: 36px;
+            width: 100px;
+            border: none;
+            border-radius: 6px;
+        }
+    </style>
+    </style>
+</head>
+
+<body>
+    <div class="page-header">
+        <h1> User Pickup Management Data</h1>
+        <p>Comprehensive tracking of User Pickup</p>
+    </div>
+    <div class="container">
+        <% for(data of pickupData){ %>
+            <div class="card">
+                <h2>
+                    <%= data.name %>
+                </h2>
+                <p><span class="card-label">Contact:</span>
+                    <%= data.contactNumber %>
+                </p>
+                <p><span class="card-label">Waste Type:</span> <span class="waste-type">
+                        <%= data.wasteType %>
+                    </span></p>
+                <p><span class="card-label">Waste Weight:</span>
+                    <%= data.wasteWeight %>
+                </p>
+                <p><span class="card-label">Pick up Date:</span>
+                    <%= data.pickupDate %>
+                </p>
+                <p><span class="card-label">Pick up Time:</span>
+                    <%= data.pickupTime %>
+                </p>
+                <p><span class="card-label">Pick up Address:</span>
+                    <%= data.pickupAddress %>
+                </p>
+                <p><span class="card-label"></span></p>
+                <p><span class="card-label">Notes:</span>
+                    <%= data.additionalNotes %>
+                </p>
+                <button id="accept">Accept</button>
+                <button id="reject">Reject</button>
+            </div>
+            <% } %>
+    </div>
+</body>
+</body>
+
+</html>
